@@ -54,7 +54,7 @@
 \subsection{第 1 小节 Problem}
 
     \begin{frame}
-        \frametitle{Integrating Blockchain and IoT}
+        \frametitle{Problem}
 
         \paragraph{Goal} Research the use of \alert{Blockchain technologies} and \alert{P2P storage systems} for IoT systems management.
 
@@ -72,7 +72,7 @@
 \subsection{第 2 小节 Solution}
 
     \begin{frame}
-        \frametitle{Use cases}
+        \frametitle{Solution}
 
         \begin{block}{Beyond criptocurrencies}
             Paradigm of decentralizing services that so far have depend exclusively of centralized trusting authorities. But possible applications are endless.
@@ -93,7 +93,7 @@
 \subsection{第 1 小节 Hardware}
 
     \begin{frame}
-        \frametitle{Blockchain factors for IoT (I)}
+        \frametitle{NodeMCU}
 
         \begin{block}{Integrity}
             IoT applications can be securely developed on top of stable blockchain networks, by building a layered architecture with thin clients.\cite{Ali2016BlockstackDA} Thus, consensus protocols and large enough nodes community make possible attacks mostly unfeasible
@@ -106,7 +106,7 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Blockchain factors for IoT (II)}
+        \frametitle{Temperature sensor DS18B20}
 
         \begin{block}{Adaptability}
             Poor scalability and low throughput of transactions are the biggest issues related to IoT systems. An acceptable trade-off between security and scalability must be determined.\cite{conoscenti}
@@ -123,7 +123,7 @@
 \subsection{第 2 小节 Software}
 
     \begin{frame}
-        \frametitle{Blockchain factors for IoT (I)}
+        \frametitle{Arduino IDE}
 
         \begin{block}{Integrity}
             IoT applications can be securely developed on top of stable blockchain networks, by building a layered architecture with thin clients.\cite{Ali2016BlockstackDA} Thus, consensus protocols and large enough nodes community make possible attacks mostly unfeasible
@@ -136,7 +136,7 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Blockchain factors for IoT (II)}
+        \frametitle{Libraries}
 
         \begin{block}{Adaptability}
             Poor scalability and low throughput of transactions are the biggest issues related to IoT systems. An acceptable trade-off between security and scalability must be determined.\cite{conoscenti}
@@ -150,12 +150,12 @@
 
     \end{frame}
 
-\section{第 3 节 Development process}
+\section{第 3 节 Development}
 
 \subsection{第 1 小节 Phase 1: Arduino IDE \& sensor}
 
     \begin{frame}
-        \frametitle{Decentralized Access Control}
+        \frametitle{System design}
         
         \paragraph{Goal} Research decentralized access control solutions for IoT systems management.\cite{ouaddah}
 
@@ -173,7 +173,7 @@
 \subsection{第 2 小节 Phase 2: IoT platform (ThingSpeak)}
 
     \begin{frame}
-        \frametitle{Current optimal solution}
+        \frametitle{System design}
         
         \begin{block}{Scalable Access Management}
             Because of scalability issues, a feasible solution proposes that access control policies are stored in the blockchain layer (smart contract). Threrefore, separating IoT devices with the blockchain\cite{novo}
@@ -194,7 +194,7 @@
 \subsection{第 3 小节 Phase 3: Node-RED \& Telegram}
 
     \begin{frame}
-        \frametitle{Setting Node-RED up}
+        \frametitle{System design}
 
             \begin{figure}
                 \centering
@@ -218,7 +218,7 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Creating Telegram bot}
+        \frametitle{System design}
 
         \paragraph{Architecture} Components classification:
 
@@ -242,7 +242,7 @@
 \subsection{第 4 小节 Phase 4: }
 
     \begin{frame}[fragile]          % 注意添加 fragile 标记
-        \frametitle{代码块}
+        \frametitle{Phase 4}
         % 代码块参数：语言，标题
         % 请减少代码初始的缩进
         \begin{codeblock}[language=c++]{C++代码}
@@ -268,7 +268,7 @@ int main(){
     \end{frame}
 
     \begin{frame}
-        \frametitle{表与统计图}
+        \frametitle{Issues}
         \begin{multicols}{2}
         \begin{table}
             \caption{表格标题\cite{pgfplotstableman}}
