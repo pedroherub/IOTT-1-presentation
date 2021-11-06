@@ -25,13 +25,13 @@
             \includegraphics[width=0.3\textwidth]{head.png}
         \end{stampbox}
     }
-    \title{Blockchain and Internet of Things 区块链和物联网}  % 标题
-    \subtitle{IoT Access Control Management}         % 副标题
+    \title{Assignment 1: Coffeemaker control system}  % 标题
+    \subtitle{IoT application system development}         % 副标题
     \author{Pedro Hernández Rubio (021032990002)}                  % 作者
     \date{\today}                          % 日期  
     \maketitle                             % 创建标题页
 
-\part{第一部分 Blockchain technologies applied to IoT architecture}
+\part{第一部分 IoT application system development}
 
 % 使用节目录
 \AtBeginSection[]{
@@ -49,9 +49,9 @@
 %     \end{frame}
 % }
 
-\section{第 1 节 Blockchain applied to IoT}
+\section{第 1 节 The IoT idea}
 
-\subsection{第 1 小节 Integrating Blockchain and IoT}
+\subsection{第 1 小节 Problem}
 
     \begin{frame}
         \frametitle{Integrating Blockchain and IoT}
@@ -69,7 +69,7 @@
 
     \end{frame}
 
-\subsection{第 2 小节 Uses cases}
+\subsection{第 2 小节 Solution}
 
     \begin{frame}
         \frametitle{Use cases}
@@ -88,7 +88,9 @@
 
     \end{frame}
 
-\subsection{第 3 小节 Blockchain factors for IoT}
+\section{第 2 节 Components}
+
+\subsection{第 1 小节 Hardware}
 
     \begin{frame}
         \frametitle{Blockchain factors for IoT (I)}
@@ -118,19 +120,39 @@
 
     \end{frame}
 
-    % \begin{frame}
-    %     \frametitle{标题}
-    %     \framesubtitle{子标题}
+\subsection{第 2 小节 Software}
 
-    %     \begin{equation}
-    %         x^2+2x+1=(x+1)^2
-    %     \end{equation}
-        
-    % \end{frame}
+    \begin{frame}
+        \frametitle{Blockchain factors for IoT (I)}
 
-\section{第 2 节 IoT Access Control}
+        \begin{block}{Integrity}
+            IoT applications can be securely developed on top of stable blockchain networks, by building a layered architecture with thin clients.\cite{Ali2016BlockstackDA} Thus, consensus protocols and large enough nodes community make possible attacks mostly unfeasible
+        \end{block}
+        \begin{block}{Anonimity}
+            As most of blockchain networs are public, full anonimity is not achieved (IoT devices can still be linked to their respective owners) -> \alert{pseudonimity}
+            Methods for not associating public keys to IoT devices' IDs are being investigated.\cite{Axon2015PrivacyawarenessIB}
+        \end{block}
 
-\subsection{第 1 小节 Decentralized Access Control}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Blockchain factors for IoT (II)}
+
+        \begin{block}{Adaptability}
+            Poor scalability and low throughput of transactions are the biggest issues related to IoT systems. An acceptable trade-off between security and scalability must be determined.\cite{conoscenti}
+        \end{block}
+
+        Mitigations:
+        \begin{itemize}
+            \item \alert{Layered architecture}: IoT applications built on top of scalable blockchain network.
+            \item \alert{Data storage}: allowing thin clients to delegate some data in the blockchain, as many IoT devices have limited resources.\cite{Axon2015PrivacyawarenessIB}
+        \end{itemize}
+
+    \end{frame}
+
+\section{第 3 节 Development process}
+
+\subsection{第 1 小节 Phase 1: Arduino IDE \& sensor}
 
     \begin{frame}
         \frametitle{Decentralized Access Control}
@@ -148,7 +170,7 @@
         \end{block}
     \end{frame}
 
-\subsection{第 2 小节 Security issues}
+\subsection{第 2 小节 Phase 2: IoT platform (ThingSpeak)}
 
     \begin{frame}
         \frametitle{Current optimal solution}
@@ -169,10 +191,10 @@
         \end{itemize}
     \end{frame}
 
-\subsection{第 3 小节 IoT architecture (I)}
+\subsection{第 3 小节 Phase 3: Node-RED \& Telegram}
 
     \begin{frame}
-        \frametitle{IoT architecture (I)}
+        \frametitle{Setting Node-RED up}
 
             \begin{figure}
                 \centering
@@ -196,7 +218,7 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{IoT architecture (II)}
+        \frametitle{Creating Telegram bot}
 
         \paragraph{Architecture} Components classification:
 
@@ -217,53 +239,53 @@
         \end{block}
     \end{frame}
 
-% \subsection{第 4 小节 IoT architecture (II)}
+\subsection{第 4 小节 Phase 4: }
 
-%     \begin{frame}[fragile]          % 注意添加 fragile 标记
-%         \frametitle{代码块}
-%         % 代码块参数：语言，标题
-%         % 请减少代码初始的缩进
-%         \begin{codeblock}[language=c++]{C++代码}
-% #include<iostream>
+    \begin{frame}[fragile]          % 注意添加 fragile 标记
+        \frametitle{代码块}
+        % 代码块参数：语言，标题
+        % 请减少代码初始的缩进
+        \begin{codeblock}[language=c++]{C++代码}
+#include<iostream>
 
-% int main(){
-%     // Console Output
-%     std::cout << "Hello, SJTU!" << std::endl;
-%     return 0;
-% }
-%         \end{codeblock}
-%     \end{frame}
+int main(){
+    // Console Output
+    std::cout << "Hello, SJTU!" << std::endl;
+    return 0;
+}
+        \end{codeblock}
+    \end{frame}
 
-%     \begin{frame}
-%         \frametitle{图}
-%         \begin{figure}
-%             \centering
-%             \begin{stampbox}
-%                 \includegraphics[height=0.3\textheight]{plant.jpg}
-%             \end{stampbox}
-%             \caption{图片标题\cite{viman}}
-%         \end{figure}
-%     \end{frame}
+    \begin{frame}
+        \frametitle{图}
+        \begin{figure}
+            \centering
+            \begin{stampbox}
+                \includegraphics[height=0.3\textheight]{plant.jpg}
+            \end{stampbox}
+            \caption{图片标题\cite{viman}}
+        \end{figure}
+    \end{frame}
 
-%     \begin{frame}
-%         \frametitle{表与统计图}
-%         \begin{multicols}{2}
-%         \begin{table}
-%             \caption{表格标题\cite{pgfplotstableman}}
-%             \pgfplotstabletypeset[
-%                 columns/Quick/.style={dec sep align},
-%                 columns/Cocktail/.style={dec sep align},
-%                 column type=r,
-%                 % fixed zerofill,
-%             ]{test.csv}
-%         \end{table}
+    \begin{frame}
+        \frametitle{表与统计图}
+        \begin{multicols}{2}
+        \begin{table}
+            \caption{表格标题\cite{pgfplotstableman}}
+            \pgfplotstabletypeset[
+                columns/Quick/.style={dec sep align},
+                columns/Cocktail/.style={dec sep align},
+                column type=r,
+                % fixed zerofill,
+            ]{test.csv}
+        \end{table}
         
-%         \begin{figure}
-%             \input{testgraph.tex}
-%             \caption{统计图标题\cite{pgfplotsman}}
-%         \end{figure}
-%         \end{multicols}
-%     \end{frame}
+        \begin{figure}
+            \input{testgraph.tex}
+            \caption{统计图标题\cite{pgfplotsman}}
+        \end{figure}
+        \end{multicols}
+    \end{frame}
 
 
 % gbt=bibtex
