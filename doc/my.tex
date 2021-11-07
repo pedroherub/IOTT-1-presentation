@@ -34,20 +34,20 @@
 \part{第一部分 IoT application system development}
 
 % 使用节目录
-\AtBeginSection[]{
-    \begin{frame}
-        % \tableofcontents[currentsection]           % 传统节目录             
-        \sectionpage                   % 节页
-    \end{frame}
-}
-
-% 使用小节目录
-% \AtBeginSubsection[]{                  % 在每小节开始
+% \AtBeginSection[]{
 %     \begin{frame}
-%         \tableofcontents[currentsection,currentsubsection]             % 传统小节目录             
-%         \subsectionpage                % 小节页
+%         % \tableofcontents[currentsection]           % 传统节目录             
+%         \sectionpage                   % 节页
 %     \end{frame}
 % }
+
+% 使用小节目录
+\AtBeginSubsection[]{                  % 在每小节开始
+    \begin{frame}
+        \tableofcontents[currentsection,currentsubsection]             % 传统小节目录             
+        \subsectionpage                % 小节页
+    \end{frame}
+}
 
 \section{第 1 节 The IoT idea}
 
@@ -66,14 +66,14 @@
 
     \end{frame}
 
-\section{第 2 节 System components}
+\section{第 2 节 Components}
 
 \subsection{第 1 小节 Hardware components}
 
     \begin{frame}
         \frametitle{Hardware components}
 
-        \paragraph{Goal} Research decentralized access control solutions for IoT systems management.\cite{ouaddah}
+        \paragraph{Goal} Research decentralized access control solutions for IoT systems management
 
         \begin{itemize}
             \item \alert{NodeMCU}: IoT board containing ESP8266 as SoC
@@ -118,7 +118,9 @@
     \begin{frame}
         \frametitle{System setup}
         
-        \paragraph{Goal} Setup IoT system: NodeMCU board and temperature sensor
+        \begin{block}{General idea}
+            Access management to billions of constrained IoT devices is quite a challenge. An easy-to-manage, generic and scalable solution is the goal.
+        \end{block}
 
         \begin{figure}
             \centering
@@ -128,9 +130,6 @@
             \caption{General idea}
         \end{figure}
 
-        \begin{block}{Scalability problem}
-            Access management to billions of constrained IoT devices is quite a challenge. An easy-to-manage, generic and scalable solution is the goal.
-        \end{block}
     \end{frame}
 
     \begin{frame}
