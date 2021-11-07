@@ -117,7 +117,7 @@
         \begin{itemize}
             \item \alert{Laptop with Linux Mint OS}: Decentralized Open Authentication (heavyweight for IoT)
             \item \alert{Arduino IDE\cite{arduinoide}}: for non-constrained resources (without memory problems)
-            
+
             \item \alert{Libraries:}
             \begin{itemize}
                 \item \alert{ESP8266}: Decentralized Open Authentication (heavyweight for IoT)
@@ -148,19 +148,6 @@
 
     \end{frame}
 
-    \begin{frame}[fragile]          % 注意添加 fragile 标记
-        \frametitle{Software libraries}
-        % 代码块参数：语言，标题
-        % 请减少代码初始的缩进
-        \begin{codeblock}[language=c]{C代码}
-#include <OneWire.h> //
-#include <DallasTemperature.h> //
-#include <ESP8266WiFi.h> //
-#include <ESP8266HTTPClient.h> //
-#include <ThingSpeak.h> //
-        \end{codeblock}
-    \end{frame}
-
 \section{第 3 节 Development}
 
 \subsection{第 1 小节 Phase 1: System setup \& Arduino IDE}
@@ -171,7 +158,7 @@
         \begin{figure}
             \centering
             \begin{stampbox}
-                \includegraphics[height=0.5\textheight]{esquema-general.png}
+                \includegraphics[height=0.5\textheight]{funnel-esp8266-3.png}
             \end{stampbox}
             \caption{General idea}
         \end{figure}
@@ -183,19 +170,32 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Phase 1: Arduino IDE}
+        \frametitle{Phase 1: Arduino IDE config}
         
-        \paragraph{Goal} Setup IoT system and connect fruitfully with Arduino IDE.\cite{ouaddah}
+        \paragraph{Board manager} Install \alert{esp8266} support (from ESP8266 Community)
 
         \begin{itemize}
-            \item \alert{DOAuth}: Decentralized Open Authentication (heavyweight for IoT)
-            \item \alert{FairAccess}: for non-constrained resources (without memory problems)
-            \item \alert{IBM Adept}: Autonomous Decentralized P2P Telemetry
+            \item \alert{Upload rate}: 
+            \item \alert{Flashing size}: 
+            \item \alert{Port}: 
         \end{itemize}
 
-        \begin{block}{Scalability problem}
-            Access management to billions of constrained IoT devices is quite a challenge. An easy-to-manage, generic and scalable solution is the goal.
+        \begin{block}{Connecting to NodeMCU board}
+            Through wire USB (laptop) to microUSB (board)
         \end{block}
+    \end{frame}
+
+    \begin{frame}[fragile]          % 注意添加 fragile 标记
+        \frametitle{Phase 1: Software libraries}
+        % 代码块参数：语言，标题
+        % 请减少代码初始的缩进
+        \begin{codeblock}[language=c]{C代码}
+#include <OneWire.h> //
+#include <DallasTemperature.h> //
+#include <ESP8266WiFi.h> //
+#include <ESP8266HTTPClient.h> //
+#include <ThingSpeak.h> //
+        \end{codeblock}
     \end{frame}
 
 \subsection{第 2 小节 Phase 2: IoT platform (ThingSpeak)}
@@ -203,33 +203,56 @@
     \begin{frame}
         \frametitle{Phase 2: System design}
         
-        \begin{block}{Scalable Access Management}
-            Because of scalability issues, a feasible solution proposes that access control policies are stored in the blockchain layer (smart contract). Threrefore, separating IoT devices with the blockchain\cite{novo}
-        \end{block}
+        \begin{figure}
+            \centering
+            \begin{stampbox}
+                \includegraphics[height=0.5\textheight]{thingspeak-schema.png}
+            \end{stampbox}
+            \caption{General idea}
+        \end{figure}
 
-        \paragraph{Decision} Main advantages of this access control in IoT:
+        \paragraph{Features} Main advantages of this IoT platform:
 
         \begin{itemize}
-            \item \alert{Mobility}: encapsulating administrative domains
-            \item \alert{Accessibility}: policies always available
-            \item \alert{Concurrency}: many managers for each device
-            \item \alert{Lightweight}: devices straightforward plugin
-            \item \alert{Scalability}: directly connected to blockchain
-            \item \alert{Transparency}: locations and policies hidden
+            \item \alert{Database}: storing data
+            \item \alert{Graphing}: advanced statistics
+            \item \alert{Dashboard}: real-time IoT information
         \end{itemize}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Phase 2: }
+        \frametitle{Phase 2: ThingSpeak channel (public)}
 
-        \paragraph{Architecture} Components classification:
+        % \begin{figure}
+        %     \centering
+        %     \begin{stampbox}
+        %         \includegraphics[height=0.5\textheight]{thingspeak-channel.png}
+        %     \end{stampbox}
+        %     \caption{General idea}
+        % \end{figure}
+        
 
-        \begin{block}{Outside blockchain network}
+        \begin{block}{Inside blockchain network}
             \begin{itemize}
-                \item \alert{Wireless sensor networks}: IoT devices domain
-                \item \alert{Management hubs}: intermediary between devices and blockchain
+            \item \alert{Managers}: smart contract managing
+            \item \alert{Agent node}: smart contract access
+            \item \alert{Smart contract}: access control system rules
+            \item \alert{Blockchain network}: private
             \end{itemize}
         \end{block}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Phase 2: Sending data to ThingSpeak channel}
+
+        % \begin{figure}
+        %     \centering
+        %     \begin{stampbox}
+        %         \includegraphics[height=0.5\textheight]{thingspeak-channel.png}
+        %     \end{stampbox}
+        %     \caption{General idea}
+        % \end{figure}
+        
 
         \begin{block}{Inside blockchain network}
             \begin{itemize}
@@ -244,63 +267,79 @@
 \subsection{第 3 小节 Phase 3: Node-RED as central manager}
 
     \begin{frame}
-        \frametitle{Phase 3: System design}
+        \frametitle{Phase 3: Node-RED deployment}
 
-            \begin{figure}
-                \centering
-                \begin{stampbox}
-                    \includegraphics[height=0.5\textheight]{architecture.png}
-                \end{stampbox}
-                \caption{Decentralized Access Control Architecture\cite{novo}}
-            \end{figure}
+        \begin{block}{Node-RED as IoT network brain}
+            Intercommunication and orchestrating different IoT devices and cloud solutions
+        \end{block}
 
-        \begin{block}{Smart contract}
+        \paragraph{Goal} Components classification:
+
+        \begin{block}{Options}
+            \begin{itemize}
+                \item \alert{Local network deployment}: Raspberry Pi (common solution)
+                \item \alert{Cloud hosted node}: Fred
+            \end{itemize}
+        \end{block}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Phase 3: Graphical flow}
+
+        \paragraph{Tool} Web code editor (mostly graphical)
+
+        \begin{figure}
+            \centering
+            \begin{stampbox}
+                \includegraphics[height=0.5\textheight]{nodered-flow.png}
+            \end{stampbox}
+            \caption{Decentralized Access Control Architecture\cite{novo}}
+        \end{figure}
+
+        \begin{block}{Importing and exporting}
             Access control management information is stored in the blockchain layer.\cite{novo}
         \end{block}
         
     \end{frame}
 
-    \begin{frame}
-        \frametitle{Phase 3: System design}
-
-        \paragraph{Architecture} Components classification:
-
-        \begin{block}{Outside blockchain network}
-            \begin{itemize}
-                \item \alert{Wireless sensor networks}: IoT devices domain
-                \item \alert{Management hubs}: intermediary between devices and blockchain
-            \end{itemize}
-        \end{block}
-
-        \begin{block}{Inside blockchain network}
-            \begin{itemize}
-            \item \alert{Managers}: smart contract managing
-            \item \alert{Agent node}: smart contract access
-            \item \alert{Smart contract}: access control system rules
-            \item \alert{Blockchain network}: private
-            \end{itemize}
-        \end{block}
-    \end{frame}
-
 \subsection{第 4 小节 Phase 4: Integrating Telegram bot}
 
-    \begin{frame}[fragile]          % 注意添加 fragile 标记
-        \frametitle{Phase 4: }
-        % 代码块参数：语言，标题
-        % 请减少代码初始的缩进
-        \begin{codeblock}[language=c++]{C++代码}
-#include<iostream>
+    \begin{frame}
+        \frametitle{Phase 4: Telegram web service configuration}
 
-int main(){
-    // Console Output
-    std::cout << "Hello, SJTU!" << std::endl;
-    return 0;
-}
-        \end{codeblock}
+        \begin{block}{Node-RED as IoT network brain}
+            Intercommunication and orchestrating different IoT devices and cloud solutions
+        \end{block}
+
+        \paragraph{Goal} Components classification:
+
+        \begin{block}{Options}
+            \begin{itemize}
+                \item \alert{Local network deployment}: Raspberry Pi (common solution)
+                \item \alert{Cloud hosted node}: Fred
+            \end{itemize}
+        \end{block}
+
     \end{frame}
 
     \begin{frame}
-        \frametitle{Phase 4: }
+     \frametitle{Phase 4: Integrating Telegram}
+        \begin{figure}
+            \centering
+            \begin{stampbox}
+                \includegraphics[height=0.5\textheight]{nodered-telegram.png}
+            \end{stampbox}
+            \caption{Decentralized Access Control Architecture\cite{novo}}
+        \end{figure}
+
+        \begin{block}{Importing and exporting}
+            Access control management information is stored in the blockchain layer.\cite{novo}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Phase 4: Sending data to ThingSpeak from Node-RED}
         \begin{figure}
             \centering
             \begin{stampbox}
@@ -310,7 +349,7 @@ int main(){
         \end{figure}
     \end{frame}
 
-\subsection{第 5 小节 Issues: }
+\subsection{第 5 小节 Issues}
 
     \begin{frame}
         \frametitle{Issues}
