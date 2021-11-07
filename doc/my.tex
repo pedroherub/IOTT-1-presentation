@@ -57,11 +57,11 @@
         \frametitle{Context: coffeemakers' health}
 
         \begin{block}{Problem}
-            I am addicted to drinking coffee. I should quit as it is not good for health but it is not easy. Anyways, I have already broken (burnt) a couple of coffeemakers: I start boiling the coffeemaker but I forget putting it out in time... 咖啡机坏了！ I am quite absent-minded.
+            I am addicted to drinking coffee. I should quit as it is not good for health but it is not easy. Anyways, I have already broken (burnt) a couple of coffeemakers: I start boiling the coffeemaker but I forget putting it out in time... 咖啡机坏了！ I am quite absent-minded...
         \end{block}
 
         \begin{block}{Solution}
-            I need a real-time communication system for safety, in order to send me an alert as soon as coffee is ready. So that I can quickly put coffeemaker out kitchen fire, avoiding burnt coffee and damages to coffeemaker. Optimally, receiving a message to my mobile phone.
+            I need a real-time communication system for safety, in order to send me an alert as soon as coffee is ready. So that I can quickly put coffeemaker out kitchen fire, avoiding burnt coffee and damages to coffeemaker. Optimally, receiving an alert message to my mobile phone.
         \end{block}
 
     \end{frame}
@@ -148,10 +148,10 @@
 
 \section{第 3 节 Development}
 
-\subsection{第 1 小节 Phase 1: System setup \& Arduino IDE}
+\subsection{第 1 小节 Phase 1: IoT device setup \& Arduino IDE}
 
     \begin{frame}
-        \frametitle{Phase 1: System setup}
+        \frametitle{Phase 1: IoT device setup}
 
         \begin{figure}
             \centering
@@ -350,38 +350,64 @@
 \subsection{第 5 小节 Issues}
 
     \begin{frame}
-        \frametitle{Issues}
+        \frametitle{Issues: hardware}
 
         \begin{block}{Hardware: resistor 4.7K}
-
+            After buying a starter electronic kit, I realized there was no 4.7K resistor included (recommended for sensor DS18B20). I was afraid of damaging electronic components
         \end{block}
 
-        \begin{block}{Software: kernel module CH341}
-
+        \begin{block}{Possible solutions}
+            \begin{itemize}
+                \item \alert{Parallel resistors}: 2 10K resistors
+                \item \alert{Serial resistors}: several resistors adding about 4.7K
+            \end{itemize}
         \end{block}
+
+        \begin{block}{Final solution: power supply MB102}
+            When connecting a power supply module to the breadboard, energy supply is more accurate (\~5V). Then, an exact resistor value is not so important. A 5.1K resistor is good enough (some tolerance in limits)
+        \end{block}
+
+
 
     \end{frame}
 
-    % \begin{frame}
-    %     \frametitle{Graph}
+    \begin{frame}
+        \frametitle{Issues: software}
+
+        \begin{block}{Software: kernel module CH341}
+            Initially my Linux OS was not recognizing NodeMCU board through USB wire. Finally I found solution\cite{ch341}: I had to update a kernel module \alert{(ch341.c)} in charge or serial USB communication.
+        \end{block}
+
+        \begin{codeblock}[language=shell]{Shell代码}
+wget https://www.dropbox.com/s/u8ny4lvyxeh8v5u/serial.tar.gz
+tar -zxvf serial.tar.gz \&& cd serial
+make -C /lib/modules/$(uname -r)/build M=$(pwd) modules
+sudo cp ch341.ko /lib/modules/$(uname -r)/kernel/drivers/usb/serial/ch341.ko
+sudo rmmod ch341 \&& sudo modprobe ch341
+        \end{codeblock}
         
-    %     \begin{multicols}{2}
-    %     \begin{table}
-    %         \caption{表格标题}
-    %         \pgfplotstabletypeset[
-    %             columns/Quick/.style={dec sep align},
-    %             columns/Cocktail/.style={dec sep align},
-    %             column type=r,
-    %             % fixed zerofill,
-    %         ]{test.csv}
-    %     \end{table}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Extra}
         
-    %     \begin{figure}
-    %         \input{testgraph.tex}
-    %         \caption{统计图标题}
-    %     \end{figure}
-    %     \end{multicols}
-    % \end{frame}
+        \begin{multicols}{2}
+        \begin{table}
+            \caption{表格标题}
+            \pgfplotstabletypeset[
+                columns/Quick/.style={dec sep align},
+                columns/Cocktail/.style={dec sep align},
+                column type=r,
+                % fixed zerofill,
+            ]{test.csv}
+        \end{table}
+        
+        \begin{figure}
+            \input{testgraph.tex}
+            \caption{统计图标题}
+        \end{figure}
+        \end{multicols}
+    \end{frame}
 
 
 % gbt=bibtex
