@@ -17,7 +17,7 @@ typesetdemofiles = {"red.tex","blue.tex","my.tex"}
 typesetsuppfiles = {
                         "coffeemaker.jpeg",
                         "esquema-general.png",
-                        "funnel-esp8266-3",
+                        "funnel-esp8266-3.png",
                         "thingspeak-schema.png",
                         "nodered-flow.png",
                         "nodered-telegram.png",
